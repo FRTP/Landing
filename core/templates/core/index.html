@@ -1,3 +1,5 @@
+{% load widget_tweaks %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,14 +10,14 @@
     <title>Frontopolar</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/core/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="css/animate.css" rel="stylesheet"/>
+    <link href="/static/core/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/core/css/animate.css" rel="stylesheet"/>
 
     <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="color/default.css" rel="stylesheet">
+    <link href="/static/core/css/style.css" rel="stylesheet">
+    <link href="/static/core/color/default.css" rel="stylesheet">
 
 
 </head>
@@ -33,7 +35,7 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                 <i class="fa fa-bars"></i>
             </button>
-            <img src="img/wb_40.png" alt="" style="padding-top: 5px">
+            <img src="/static/core/img/wb_40.png" alt="" style="padding-top: 5px">
             <a class="navbar-brand" href="index.html">
                 <h1>FRONTOPOLAR</h1>
             </a>
@@ -99,13 +101,13 @@
                                 </h5>
                             </div>
                         </div>
-                    <img src="img/team/1.jpg" id="item-1" name="Name1" role="role1" class="img-circle img-responsive">
-                    <img src="img/team/2.jpg" id="item-2" name="Name2" role="role2" class="img-circle img-responsive">
-                    <img src="img/team/3.jpg" id="item-3" name="Name3" role="role3" class="img-circle img-responsive">
-                    <img src="img/team/4.jpg" id="item-4" name="Name4" role="role4" class="img-circle img-responsive">
-                    <img src="img/team/4.jpg" id="item-5" name="Name5" role="role5" class="img-circle img-responsive">
-                    <img src="img/team/4.jpg" id="item-6" name="Name6" role="role6" class="img-circle img-responsive">
-                    <img src="img/team/4.jpg" id="item-7" name="Name7" role="role7" class="img-circle img-responsive">
+                    <img src="/static/core/img/team/1.jpg" id="item-1" name="Name1" role="role1" class="img-circle img-responsive">
+                    <img src="/static/core/img/team/2.jpg" id="item-2" name="Name2" role="role2" class="img-circle img-responsive">
+                    <img src="/static/core/img/team/3.jpg" id="item-3" name="Name3" role="role3" class="img-circle img-responsive">
+                    <img src="/static/core/img/team/4.jpg" id="item-4" name="Name4" role="role4" class="img-circle img-responsive">
+                    <img src="/static/core/img/team/4.jpg" id="item-5" name="Name5" role="role5" class="img-circle img-responsive">
+                    <img src="/static/core/img/team/4.jpg" id="item-6" name="Name6" role="role6" class="img-circle img-responsive">
+                    <img src="/static/core/img/team/4.jpg" id="item-7" name="Name7" role="role7" class="img-circle img-responsive">
                 </div>
             </div>
         </div>
@@ -143,7 +145,7 @@
                 <div class="wow fadeInLeft" data-wow-delay="0.2s">
                     <div class="service-box">
                         <div class="service-icon">
-                            <img src="img/icons/icon_al_80.png" alt=""/>
+                            <img src="/static/core/img/icons/icon_al_80.png" alt=""/>
                         </div>
                         <div class="service-desc">
                             <h5>Algorithms</h5>
@@ -156,7 +158,7 @@
                 <div class="wow fadeInUp" data-wow-delay="0.2s">
                     <div class="service-box">
                         <div class="service-icon">
-                            <img src="img/icons/icon_fr_80.png" alt=""/>
+                            <img src="/static/core/img/icons/icon_fr_80.png" alt=""/>
                         </div>
                         <div class="service-desc">
                             <h5>Framework</h5>
@@ -169,7 +171,7 @@
                 <div class="wow fadeInUp" data-wow-delay="0.2s">
                     <div class="service-box">
                         <div class="service-icon">
-                            <img src="img/icons/icon_an_80.png" alt=""/>
+                            <img src="/static/core/img/icons/icon_an_80.png" alt=""/>
                         </div>
                         <div class="service-desc">
                             <h5>Analytics</h5>
@@ -203,8 +205,17 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-1">
             <h2>Select algorithm</h2>
-            <button type="button" class="btn btn-lg">Choose file</button>
-            <button type="button" class="btn btn-info btn-lg">Upload</button>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="btn btn-lg">
+                    {{ form.file_|add_class:"btn btn-lg"|add_class:"hidden" }}
+                    {{ form.file_.label_tag }}
+                    <!-- Background color "GRAY" for label_tag -->
+                </div>
+                <button type="submit" class="btn btn-info btn-lg">Upload</button>
+            </form>
+{#            <button type="button" class="btn btn-lg">Choose file</button>#}
+{#            <button type="button" class="btn btn-info btn-lg">Upload</button>#}
         </div>
         <div class="col-md-3">
             <div id="circle">
@@ -341,68 +352,73 @@
 
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Config</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group row">
-                    <label for="name-input" class="col-2 col-form-label">Config name</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" value="config_1" id="name-input">
-                    </div>
+ <form method="get" action={% url "main_page" %}>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Config</h4>
                 </div>
-                <div class="form-group row">
-                    <label for="train_start-input" class="col-2 col-form-label">Train start date</label>
-                    <div class="col-10">
-                        <input class="form-control" type="date" value="01.01.2014" id="train_start-input">
+                <div class="modal-body">
+{#                    <div class="form-group row">#}
+{#                        <label for="name-input" class="col-2 col-form-label">Config name</label>#}
+{#                        <div class="col-10">#}
+{#                            <input class="form-control" type="text" value="config_1" id="name-input">#}
+{#                            {{ config_form.config_name|append_attr:"class:form-control" }}#}
+{#                        </div>#}
+{#                    </div>#}
+                    <div class="form-group row">
+                        <label for="train_start-input" class="col-2 col-form-label">Train start date</label>
+                        <div class="col-10">
+{#                            <input class="form-control" type="date" value="01.01.2014" id="train_start-input">#}
+                            {{ config_form.train_start_date|append_attr:"class:form-control"|attr:"type:date" }}
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="train-end-input" class="col-2 col-form-label">Train end date</label>
-                    <div class="col-10">
-                        <input class="form-control" type="date" value="01.01.2017" id="train-end-input">
+                    <div class="form-group row">
+                        <label for="train-end-input" class="col-2 col-form-label">Train end date</label>
+                        <div class="col-10">
+                            {{ config_form.train_end_date|attr:"class:form-control"|attr:"type:date" }}
+{#                            <input class="form-control" type="date" value="01.01.2017" id="train-end-input">#}
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="test-start-input" class="col-2 col-form-label">Test start date</label>
-                    <div class="col-10">
-                        <input class="form-control" type="date" value="01.01.2017" id="test-start-input">
+                    <div class="form-group row">
+                        <label for="test-start-input" class="col-2 col-form-label">Test start date</label>
+                        <div class="col-10">
+                            {{ config_form.test_start_date|append_attr:"class:form-control"|attr:"type:date"}}
+{#                            <input class="form-control" type="date" value="01.01.2017" id="test-start-input">#}
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="test-end-input" class="col-2 col-form-label">Test end date</label>
-                    <div class="col-10">
-                        <input class="form-control" type="date" value="01.05.2017" id="test-end-input">
+                    <div class="form-group row">
+                        <label for="test-end-input" class="col-2 col-form-label">Test end date</label>
+                        <div class="col-10">
+                            {{ config_form.test_end_date|append_attr:"class:form-control"|attr:"type:date" }}
+{#                            <input class="form-control" type="date" value="01.05.2017" id="test-end-input">#}
+                        </div>
                     </div>
-                </div>
 
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default" data-dismiss="modal">Save And Close</button>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button tupe="button" class="btn btn-info">Submit</button>
-            </div>
+
         </div>
-
     </div>
-</div>
-
+ </form>
 
 <!-- Core JavaScript Files -->
-<script src="js/circle-progress.js"></script>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.easing.min.js"></script>
-<script src="js/jquery.scrollTo.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/jquery.waterwheelCarousel.js"></script>
+<script src="/static/core/js/circle-progress.js"></script>
+<script src="/static/core/js/jquery.min.js"></script>
+<script src="/static/core/js/bootstrap.min.js"></script>
+<script src="/static/core/js/jquery.easing.min.js"></script>
+<script src="/static/core/js/jquery.scrollTo.js"></script>
+<script src="/static/core/js/wow.min.js"></script>
+<script src="/static/core/js/jquery.waterwheelCarousel.js"></script>
 <!-- Custom Theme JavaScript -->
-<script src="js/custom.js"></script>
-<script src="contactform/contactform.js"></script>
+<script src="/static/core/js/custom.js"></script>
+<script src="/static/core/contactform/contactform.js"></script>
 
 </body>
 
