@@ -366,6 +366,7 @@
                     <h4 class="modal-title">Config</h4>
                 </div>
                 <div class="modal-body">
+                    <!-- Lets not provide config name -->
 {#                    <div class="form-group row">#}
 {#                        <label for="name-input" class="col-2 col-form-label">Config name</label>#}
 {#                        <div class="col-10">#}
@@ -377,27 +378,31 @@
                         <label for="train_start-input" class="col-2 col-form-label">Train start date</label>
                         <div class="col-10">
 {#                            <input class="form-control" type="date" value="01.01.2014" id="train_start-input">#}
-                            {{ config_form.train_start_date|append_attr:"class:form-control"|attr:"type:date" }}
+{#                            {{ config_form.train_start_date|append_attr:"class:form-control"|attr:"type:date" }}#}
+                            {{ config_form.train_start_date|attr:"class:form-control" }}
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="train-end-input" class="col-2 col-form-label">Train end date</label>
                         <div class="col-10">
-                            {{ config_form.train_end_date|attr:"class:form-control"|attr:"type:date" }}
+{#                            {{ config_form.train_end_date|attr:"class:form-control"|attr:"type:date" }}#}
+                            {{ config_form.train_end_date|attr:"class:form-control" }}
 {#                            <input class="form-control" type="date" value="01.01.2017" id="train-end-input">#}
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="test-start-input" class="col-2 col-form-label">Test start date</label>
                         <div class="col-10">
-                            {{ config_form.test_start_date|append_attr:"class:form-control"|attr:"type:date"}}
+{#                            {{ config_form.test_start_date|append_attr:"class:form-control"|attr:"type:date"}}#}
+                            {{ config_form.test_start_date|append_attr:"class:form-control"}}
 {#                            <input class="form-control" type="date" value="01.01.2017" id="test-start-input">#}
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="test-end-input" class="col-2 col-form-label">Test end date</label>
                         <div class="col-10">
-                            {{ config_form.test_end_date|append_attr:"class:form-control"|attr:"type:date" }}
+{#                            {{ config_form.test_end_date|append_attr:"class:form-control"|attr:"type:date" }}#}
+                            {{ config_form.test_end_date|append_attr:"class:form-control" }}
 {#                            <input class="form-control" type="date" value="01.05.2017" id="test-end-input">#}
                         </div>
                     </div>
