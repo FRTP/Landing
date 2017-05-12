@@ -1,5 +1,6 @@
 import os
 
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from core.forms import MyUploadForm, ConfigForm
@@ -12,10 +13,10 @@ def index(request):
 
 def handle_uploaded_file(f):
     filename = f.__str__()
-    directory = "uploaded"
+    directory = "uploaded/"
     if not os.path.exists(directory):
         os.makedirs(directory)
-    with open('uploaded/' + filename, 'wb+') as destination:
+    with open(directory + filename, 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
 
@@ -42,3 +43,8 @@ def render_main_page(request):
                           'uploaded': False,
                           'config_form': config_form,
                       })
+
+
+def run_algorithm(request):
+    return render(request, "core/response.html")
+
