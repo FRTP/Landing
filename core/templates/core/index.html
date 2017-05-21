@@ -47,7 +47,7 @@
                 <li class="active"><a href="#intro">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#service">Service</a></li>
-                <li><a href="#algorithm">Try Your Algorithm</a></li>
+                <li><a href="#algorithm">Try Algorithm</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -61,7 +61,7 @@
 
     <div class="slogan">
         <h2>WELCOME TO <span class="text_color">FRONTOPOLAR</span></h2>
-        <h4>WE ARE GROUP OF GENTLEMEN MAKING AWESOME WEB WITH BOOTSTRAP</h4>
+        <h4>WE ARE GROUP OF DEVELOPERS MAKING A FRAMEWORK FOR ALGORITHM TRADING</h4>
     </div>
     <div class="page-scroll">
         <a href="#about" class="btn btn-circle">
@@ -94,20 +94,20 @@
                         <div class="row boxed-grey">
                             <div class="team">
                                 <h3 id="name">
-                                    Name1
+                                    ALEXEY PODKIN
                                 </h3>
                                 <h5 id="role">
-                                    Role1
+                                    MANAGER
                                 </h5>
                             </div>
                         </div>
-                    <img src="/static/core/img/team/1.jpg" id="item-1" name="Name1" role="role1" class="img-circle img-responsive">
-                    <img src="/static/core/img/team/2.jpg" id="item-2" name="Name2" role="role2" class="img-circle img-responsive">
-                    <img src="/static/core/img/team/3.jpg" id="item-3" name="Name3" role="role3" class="img-circle img-responsive">
-                    <img src="/static/core/img/team/4.jpg" id="item-4" name="Name4" role="role4" class="img-circle img-responsive">
-                    <img src="/static/core/img/team/4.jpg" id="item-5" name="Name5" role="role5" class="img-circle img-responsive">
-                    <img src="/static/core/img/team/4.jpg" id="item-6" name="Name6" role="role6" class="img-circle img-responsive">
-                    <img src="/static/core/img/team/4.jpg" id="item-7" name="Name7" role="role7" class="img-circle img-responsive">
+                    <img src="static/core/img/team/7.jpg" id="item-1" name="ALEXEY PODKIN" role="MANAGER" class="img-circle img-responsive" style="width: 300px; height: 300px">
+                    <img src="static/core/img/team/2.jpg" id="item-2" name="ALEX MIKHALEVICH" role="FRAMEWORK" class="img-circle img-responsive" style="width: 300px; height: 300px">
+                    <img src="static/core/img/team/4.jpg" id="item-3" name="ANTON KARAZEEV" role="ALGORITHM" class="img-circle img-responsive" style="width: 300px; height: 300px">
+                    <img src="static/core/img/team/3.jpg" id="item-4" name="ANDREY KARYAMIN" role="FRAMEWORK" class="img-circle img-responsive" style="width: 300px; height: 300px">
+                    <img src="static/core/img/team/6.jpg" id="item-5" name="MICHAEL NEMILOV" role="ALGORITHM" class="img-circle img-responsive" style="width: 300px; height: 300px">
+                    <img src="static/core/img/team/5.jpg" id="item-6" name="ALEXANDER ZAYKOV" role="FRAMEWORK" class="img-circle img-responsive" style="width: 300px; height: 300px">
+                    <img src="static/core/img/team/1.jpg" id="item-7" name="ANTON TRUBAKOV" role="ALGORITHM" class="img-circle img-responsive" style="width: 300px; height: 300px">
                 </div>
             </div>
         </div>
@@ -194,7 +194,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     <div class="wow bounceInDown" data-wow-delay="0.4s">
                         <div class="section-heading">
-                            <h2>Try your algorithm</h2>
+                            <h2>Try algorithm</h2>
                             <i class="fa fa-2x fa-angle-down"></i>
                         </div>
                     </div>
@@ -205,31 +205,31 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-1">
             <h2>Select algorithm</h2>
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="btn btn-lg">
-                    {{ form.file_|add_class:"btn btn-lg"|add_class:"hidden" }}
-                    {{ form.file_.label_tag }}
-                    <!-- Background color "GRAY" for label_tag -->
+            <div class="row" style="padding-bottom: 30px;">
+                <div class="col-md-offset-4">
+                    <img src="/static/core/img/algo1_200.png" class="img-responsive">
                 </div>
-                <button type="submit" class="btn btn-info btn-lg">Upload</button>
-            </form>
-{#            <button type="button" class="btn btn-lg">Choose file</button>#}
-{#            <button type="button" class="btn btn-info btn-lg">Upload</button>#}
+            </div>
+            <button type="submit" class="btn btn-info btn-lg" data-toggle="modal" data-target="#algo_modal">Select</button>
         </div>
         <div class="col-md-3">
             <div id="circle">
             </div>
             <form method="get" action="{% url "run_algorithm" %}">
-                <button type="submit" class="btn btn-info btn-lg start-button" style="border-radius: 50%; width: 55%;">
+                <button type="submit" class="btn btn-info btn-lg start-button" style="border-radius: 50%; width: 55%;" onclick="start_alg()">
                     <span class="glyphicon glyphicon-play" style="font-size: 5em; margin-left: 10%; padding-bottom: 20%"></span>
                 </button>
             </form>
+            <a href="https://www.google.com"><button type="button" id="download-button" class="btn btn-danger btn-lg" style="margin-right: 140px; margin-top: 35px; visibility: hidden">Download results</button></a>
         </div>
         <div class="col-md-4 col-md-pull-1">
             <h2>Select config file</h2>
-
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Edit file</button>
+            <div class="row" style="padding-bottom: 30px;">
+                <div class="col-md-offset-3">
+                    <img src="/static/core/img/setting2_200.png" class="img-responsive">
+                </div>
+            </div>
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#config_modal">Select</button>
         </div>
     </div>
 
@@ -356,69 +356,70 @@
 
 
 <!-- Modal -->
- <form method="get" action={% url "main_page" %}>
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Config</h4>
-                </div>
-                <div class="modal-body">
-                    <!-- Lets not provide config name -->
-{#                    <div class="form-group row">#}
-{#                        <label for="name-input" class="col-2 col-form-label">Config name</label>#}
-{#                        <div class="col-10">#}
-{#                            <input class="form-control" type="text" value="config_1" id="name-input">#}
-{#                            {{ config_form.config_name|append_attr:"class:form-control" }}#}
-{#                        </div>#}
-{#                    </div>#}
-                    <div class="form-group row">
-                        <label for="train_start-input" class="col-2 col-form-label">Train start date</label>
-                        <div class="col-10">
-{#                            <input class="form-control" type="date" value="01.01.2014" id="train_start-input">#}
-{#                            {{ config_form.train_start_date|append_attr:"class:form-control"|attr:"type:date" }}#}
-                            {{ config_form.train_start_date|attr:"class:form-control" }}
-                        </div>
+<div id="config_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Config</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6" id="config_1" onclick="choose_config1()">
+                        <br>
+                        <p>Train period:</p>
+                        <p>Test period:</p>
+                        <p>Assets:</p>
+                        <p>Metrics</p>
                     </div>
-                    <div class="form-group row">
-                        <label for="train-end-input" class="col-2 col-form-label">Train end date</label>
-                        <div class="col-10">
-{#                            {{ config_form.train_end_date|attr:"class:form-control"|attr:"type:date" }}#}
-                            {{ config_form.train_end_date|attr:"class:form-control" }}
-{#                            <input class="form-control" type="date" value="01.01.2017" id="train-end-input">#}
-                        </div>
+                    <div class="col-md-6" id="config_2" onclick="choose_config2()">
+                        <br>
+                        <p>Train period:</p>
+                        <p>Test period:</p>
+                        <p>Assets:</p>
+                        <p>Metrics</p>
                     </div>
-                    <div class="form-group row">
-                        <label for="test-start-input" class="col-2 col-form-label">Test start date</label>
-                        <div class="col-10">
-{#                            {{ config_form.test_start_date|append_attr:"class:form-control"|attr:"type:date"}}#}
-                            {{ config_form.test_start_date|append_attr:"class:form-control"}}
-{#                            <input class="form-control" type="date" value="01.01.2017" id="test-start-input">#}
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="test-end-input" class="col-2 col-form-label">Test end date</label>
-                        <div class="col-10">
-{#                            {{ config_form.test_end_date|append_attr:"class:form-control"|attr:"type:date" }}#}
-                            {{ config_form.test_end_date|append_attr:"class:form-control" }}
-{#                            <input class="form-control" type="date" value="01.05.2017" id="test-end-input">#}
-                        </div>
-                    </div>
-
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-default" data-dismiss="modal">Save And Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info">Submit</button>
                 </div>
             </div>
-
         </div>
     </div>
- </form>
+</div>
+
+<!-- Modal -->
+<div id="algo_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Config</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6" id="algo_1" onclick="choose_algo1()">
+                        <br>
+                        <p>Algo1</p>
+                    </div>
+                    <div class="col-md-6" id="algo_2" onclick="choose_algo2()">
+                        <br>
+                        <p>Algo2</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Core JavaScript Files -->
-<script src="/static/core/js/circle-progress.js"></script>
 <script src="/static/core/js/jquery.min.js"></script>
 <script src="/static/core/js/bootstrap.min.js"></script>
 <script src="/static/core/js/jquery.easing.min.js"></script>

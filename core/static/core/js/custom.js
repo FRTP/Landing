@@ -62,3 +62,31 @@ $(document).ready(function () {
     });
 })(jQuery);
 
+function start_alg() {
+    window.setTimeout(function() {
+		document.getElementById('download-button').style.visibility = "visible";
+    }, 5000);
+}
+
+function choose_config1() {
+    console.log(1);
+    document.getElementById('config_1').style.backgroundColor = 'blue';
+    document.getElementById('config_2').style.backgroundColor = 'white';
+}
+
+function choose_config2() {
+    document.getElementById('config_2').style.backgroundColor = 'blue';
+    document.getElementById('config_1').style.backgroundColor = 'white'
+}
+
+function choose_algo1() {
+    console.log(1);
+    document.getElementById('algo_1').style.backgroundColor = 'blue';
+    document.getElementById('algo_2').style.backgroundColor = 'white';
+}
+
+function choose_algo2() {
+    document.getElementById('algo_2').style.backgroundColor = 'blue';
+    document.getElementById('algo_1').style.backgroundColor = 'white'
+}
+
