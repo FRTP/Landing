@@ -1,9 +1,3 @@
-var random_algorithm_chosen = true;
-var clever_algorithm_chosen = false;
-
-var config1_chosen = true;
-var config2_chosen = false;
-
 (function ($) {
 
 	new WOW().init();
@@ -68,15 +62,40 @@ $(document).ready(function () {
     });
 })(jQuery);
 
-function start_alg() {
-
-    // window.setTimeout(function() {
-		// document.getElementById('download-button').style.visibility = "visible";
-    // }, 5000);
-    document.getElementById('download-button').style.visibility = "visible";
+function disable_download_button() {
+    // document.getElementById('download-button').style.visibility = "hidden";
+    document.getElementById('download-button').disabled = true;
 }
 
+function start_alg() {
+    document.getElementById('download-button').style.visibility = "visible";
+
+    if (random_algorithm_chosen === true) {
+        // document.getElementById('download-button').style.visibility = "visible";
+        document.getElementById('download-button').disabled = false;
+    } else if (clever_algorithm_chosen === true) {
+        window.setTimeout(
+            function() {
+                // document.getElementById('download-button').style.visibility = "visible";
+                document.getElementById('download-button').disabled = false;
+            },
+            5000);
+    } else {
+        alert("Something went wrong.")
+    }
+
+    // document.getElementById('download-button').style.visibility = "visible";
+}
+
+var random_algorithm_chosen = true;
+var clever_algorithm_chosen = false;
+
+var config1_chosen = true;
+var config2_chosen = false;
+
 function choose_config1() {
+    disable_download_button();
+
     config1_chosen = true;
     config2_chosen = false;
 
@@ -86,6 +105,8 @@ function choose_config1() {
 }
 
 function choose_config2() {
+    disable_download_button();
+
     config1_chosen = false;
     config2_chosen = true;
 
@@ -94,19 +115,23 @@ function choose_config2() {
 }
 
 function choose_random_algorithm() {
+    disable_download_button();
+
     random_algorithm_chosen = true;
     clever_algorithm_chosen = false;
 
     console.log(1);
-    document.getElementById('algo_1').style.backgroundColor = 'blue';
-    document.getElementById('algo_2').style.backgroundColor = 'white';
+    document.getElementById('random_algorithm_id').style.backgroundColor = 'blue';
+    document.getElementById('clever_algorithm_id').style.backgroundColor = 'white';
 }
 
 function choose_clever_algorithm() {
+    disable_download_button();
+    
     random_algorithm_chosen = false;
     clever_algorithm_chosen = true;
 
-    document.getElementById('algo_2').style.backgroundColor = 'blue';
-    document.getElementById('algo_1').style.backgroundColor = 'white'
+    document.getElementById('clever_algorithm_id').style.backgroundColor = 'blue';
+    document.getElementById('random_algorithm_id').style.backgroundColor = 'white'
 }
 

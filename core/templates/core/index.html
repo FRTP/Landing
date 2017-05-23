@@ -407,11 +407,11 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-6" id="algo_1" onclick="choose_random_algorithm()">
+                    <div class="col-md-6" id="random_algorithm_id" onclick="choose_random_algorithm()">
                         <br>
                         <p>random_algorithm</p>
                     </div>
-                    <div class="col-md-6" id="algo_2" onclick="choose_clever_algorithm()">
+                    <div class="col-md-6" id="clever_algorithm_id" onclick="choose_clever_algorithm()">
                         <br>
                         <p>clever_algorithm</p>
                     </div>
@@ -473,7 +473,8 @@
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
             },
             success:function () {
-                alert('Algorithm started working!');
+{#                alert('Algorithm started working!');#}
+{#                Just do nothing #}
             }
         })
     } );
