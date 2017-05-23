@@ -407,13 +407,13 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-6" id="algo_1" onclick="choose_algo1()">
+                    <div class="col-md-6" id="algo_1" onclick="choose_random_algorithm()">
                         <br>
-                        <p>Algo1</p>
+                        <p>random_algorithm</p>
                     </div>
-                    <div class="col-md-6" id="algo_2" onclick="choose_algo2()">
+                    <div class="col-md-6" id="algo_2" onclick="choose_clever_algorithm()">
                         <br>
-                        <p>Algo2</p>
+                        <p>clever_algorithm</p>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -439,11 +439,11 @@
 <script type="text/javascript">
 
     function get_algo_name() {
-        if (algo1_chosen === true) {
-            return 'algo1';
+        if (random_algorithm_chosen === true) {
+            return 'random_algorithm';
         }
-        if (algo2_chosen === true) {
-            return 'algo2';
+        if (clever_algorithm_chosen === true) {
+            return 'clever_algorithm';
         }
         return 'wrong_algo';
     }
@@ -473,17 +473,12 @@
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
             },
             success:function () {
-{#                alert('Algorithm started working!');#}
+                alert('Algorithm started working!');
             }
         })
     } );
 
 
-{#    Results download handler (red download button) #}
-{#    $(document).on('submit', '#download_results', function (e) {#}
-{#    e.preventDefault();#}
-{#        #}
-{# } )#}
 </script>
 
 </body>

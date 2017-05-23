@@ -1,5 +1,5 @@
-var algo1_chosen = true;
-var algo2_chosen = false;
+var random_algorithm_chosen = true;
+var clever_algorithm_chosen = false;
 
 var config1_chosen = true;
 var config2_chosen = false;
@@ -93,18 +93,18 @@ function choose_config2() {
     document.getElementById('config_1').style.backgroundColor = 'white'
 }
 
-function choose_algo1() {
-    algo1_chosen = true;
-    algo2_chosen = false;
+function choose_random_algorithm() {
+    random_algorithm_chosen = true;
+    clever_algorithm_chosen = false;
 
     console.log(1);
     document.getElementById('algo_1').style.backgroundColor = 'blue';
     document.getElementById('algo_2').style.backgroundColor = 'white';
 }
 
-function choose_algo2() {
-    algo1_chosen = false;
-    algo2_chosen = true;
+function choose_clever_algorithm() {
+    random_algorithm_chosen = false;
+    clever_algorithm_chosen = true;
 
     document.getElementById('algo_2').style.backgroundColor = 'blue';
     document.getElementById('algo_1').style.backgroundColor = 'white'

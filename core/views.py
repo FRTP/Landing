@@ -46,21 +46,54 @@ def render_main_page(request):
                       })
 
 
-def download_file_button_click(request):
-    # define which algorithm was chosen and return needed
-    filename = "report1.pdf"
-    path = "/home/avk/github/Landing/Framework_src/pdf_reports/"
-    our_report = open(path+filename, "r")
-    response = HttpResponse(FileWrapper(our_report),
-                            content_type="application/pdf")
-    response["Content-Disposition"] = "attachment;filename=resume.pdf"
-    our_report.close()
-    print("I'm here, mfk")
-    return response
+needed_report_name = 'report1.pdf'
 
 
 def run_algorithm(request):
-    # here run algorithm and create pdfs with results
+    # define which algorithm was chosen and return needed
+    algo_name = request.POST["algo_name"]
+    config_name = request.POST["config_name"]
+
+    ################# GETTING CONFIG PATH ######################
+    # Getting path to config
+    if config_name == "config1":
+        config_path = "path/to/config/1/"
+    elif config_name == "config2":
+        config_path = "path/to/config/2/"
+    else:
+        # Mustn't appear at all
+        config_path = "path/to/reserve/config/file"
+
+    ################# RUNNING ALGORITHM ON CONFIG ##############
+    # Running needed algorithm using config_path
+    if algo_name == "random_algorithm":
+        # run random algorithm
+        # generate random report
+        global needed_report_name
+        needed_report_name = 'random_algorithm_report.pdf'
+    elif algo_name == "clever_algorithm":
+        print("I'm here, mfk")
+
+        # run clever algorithm
+        # generate clever report
+        global needed_report_name
+        needed_report_name = 'clever_algorithm_report.pdf'
+    else:
+        # MUST NOT APPEAR!
+        needed_report_name = "reserve_clever_report.pdf"
+
     print('Run algorithm!')
+
     return HttpResponse('')
 
+
+def download_file_button_click(request):
+    global needed_report_name
+    path = "Framework_src/pdf_reports/"
+    our_report = open(path + needed_report_name, "r")
+    response = HttpResponse(FileWrapper(our_report),
+                            content_type="application/pdf")
+    response["Content-Disposition"] = 'attachment;filename=' + \
+                                      needed_report_name
+    our_report.close()
+    return response
