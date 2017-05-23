@@ -215,12 +215,18 @@
         <div class="col-md-3">
             <div id="circle">
             </div>
-            <form method="get" action="{% url "run_algorithm" %}">
+            <!--action="{% url "run_algorithm" %}"-->
+            <form method="post" id="submit_algorithm">
+                {% csrf_token %}
                 <button type="submit" class="btn btn-info btn-lg start-button" style="border-radius: 50%; width: 55%;" onclick="start_alg()">
                     <span class="glyphicon glyphicon-play" style="font-size: 5em; margin-left: 10%; padding-bottom: 20%"></span>
                 </button>
             </form>
-            <a href="https://www.google.com"><button type="button" id="download-button" class="btn btn-danger btn-lg" style="margin-right: 140px; margin-top: 35px; visibility: hidden">Download results</button></a>
+{#            <form method="get" id="download_results">#}
+                <a href="/download_results/">
+                    <button type="submit" id="download-button" class="btn btn-danger btn-lg" style="margin-right: 140px; margin-top: 35px; visibility: hidden">Download results</button>
+                </a>
+{#            </form>#}
         </div>
         <div class="col-md-4 col-md-pull-1">
             <h2>Select config file</h2>
@@ -383,7 +389,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-info">Submit</button>
+{#                    <button type="button" class="btn btn-info">Submit</button>#}
                 </div>
             </div>
         </div>
@@ -412,7 +418,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-info">Submit</button>
+{#                    <button type="submit" class="btn btn-info">Submit</button>#}
                 </div>
             </div>
         </div>
@@ -429,6 +435,56 @@
 <!-- Custom Theme JavaScript -->
 <script src="/static/core/js/custom.js"></script>
 <script src="/static/core/contactform/contactform.js"></script>
+
+<script type="text/javascript">
+
+    function get_algo_name() {
+        if (algo1_chosen === true) {
+            return 'algo1';
+        }
+        if (algo2_chosen === true) {
+            return 'algo2';
+        }
+        return 'wrong_algo';
+    }
+
+    function get_config_name() {
+        if (config1_chosen === true) {
+            return 'config1';
+        }
+        if (config2_chosen === true) {
+            return 'config2';
+        }
+        return 'wrong_config';
+    }
+
+
+
+{#    Algorithm run handler ( play button ) #}
+    $(document).on('submit', '#submit_algorithm', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            type:'POST',
+            url:'/run_algorithm/',
+            data:{
+                algo_name:get_algo_name(),
+                config_name:get_config_name(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+            },
+            success:function () {
+{#                alert('Algorithm started working!');#}
+            }
+        })
+    } );
+
+
+{#    Results download handler (red download button) #}
+{#    $(document).on('submit', '#download_results', function (e) {#}
+{#    e.preventDefault();#}
+{#        #}
+{# } )#}
+</script>
 
 </body>
 

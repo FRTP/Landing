@@ -1,3 +1,9 @@
+var algo1_chosen = true;
+var algo2_chosen = false;
+
+var config1_chosen = true;
+var config2_chosen = false;
+
 (function ($) {
 
 	new WOW().init();
@@ -63,29 +69,43 @@ $(document).ready(function () {
 })(jQuery);
 
 function start_alg() {
-    window.setTimeout(function() {
-		document.getElementById('download-button').style.visibility = "visible";
-    }, 5000);
+
+    // window.setTimeout(function() {
+		// document.getElementById('download-button').style.visibility = "visible";
+    // }, 5000);
+    document.getElementById('download-button').style.visibility = "visible";
 }
 
 function choose_config1() {
+    config1_chosen = true;
+    config2_chosen = false;
+
     console.log(1);
     document.getElementById('config_1').style.backgroundColor = 'blue';
     document.getElementById('config_2').style.backgroundColor = 'white';
 }
 
 function choose_config2() {
+    config1_chosen = false;
+    config2_chosen = true;
+
     document.getElementById('config_2').style.backgroundColor = 'blue';
     document.getElementById('config_1').style.backgroundColor = 'white'
 }
 
 function choose_algo1() {
+    algo1_chosen = true;
+    algo2_chosen = false;
+
     console.log(1);
     document.getElementById('algo_1').style.backgroundColor = 'blue';
     document.getElementById('algo_2').style.backgroundColor = 'white';
 }
 
 function choose_algo2() {
+    algo1_chosen = false;
+    algo2_chosen = true;
+
     document.getElementById('algo_2').style.backgroundColor = 'blue';
     document.getElementById('algo_1').style.backgroundColor = 'white'
 }

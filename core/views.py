@@ -1,4 +1,5 @@
 import os
+from wsgiref.util import FileWrapper
 
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -45,6 +46,21 @@ def render_main_page(request):
                       })
 
 
+def download_file_button_click(request):
+    # define which algorithm was chosen and return needed
+    filename = "report1.pdf"
+    path = "/home/avk/github/Landing/Framework_src/pdf_reports/"
+    our_report = open(path+filename, "r")
+    response = HttpResponse(FileWrapper(our_report),
+                            content_type="application/pdf")
+    response["Content-Disposition"] = "attachment;filename=resume.pdf"
+    our_report.close()
+    print("I'm here, mfk")
+    return response
+
+
 def run_algorithm(request):
-    return render(request, "core/response.html")
+    # here run algorithm and create pdfs with results
+    print('Run algorithm!')
+    return HttpResponse('')
 
