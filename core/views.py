@@ -46,7 +46,7 @@ def render_main_page(request):
                       })
 
 
-needed_report_name = 'report1.pdf'
+needed_report_name = 'random_algorithm_report100'
 
 
 def run_algorithm(request):
@@ -57,30 +57,38 @@ def run_algorithm(request):
     ################# GETTING CONFIG PATH ######################
     # Getting path to config
     if config_name == "config1":
-        config_path = "path/to/config/1/"
+        config_path = "100days"
     elif config_name == "config2":
-        config_path = "path/to/config/2/"
+        config_path = "250days"
     else:
-        # Mustn't appear at all
-        config_path = "path/to/reserve/config/file"
+        assert False
 
+    from loader import Loader
     ################# RUNNING ALGORITHM ON CONFIG ##############
     # Running needed algorithm using config_path
     if algo_name == "random_algorithm":
         # run random algorithm
         # generate random report
         global needed_report_name
-        needed_report_name = 'random_algorithm_report.pdf'
-    elif algo_name == "clever_algorithm":
-        print("I'm here, mfk")
+        if config_path == "100days":
+            Loader(config_filename='config100_random.cfg')
+            needed_report_name = 'random_algorithm_report100.pdf'
+        if config_path == "250days":
+            Loader(config_filename='config250_random.cfg')
+            needed_report_name = 'random_algorithm_report250.pdf'
 
+    elif algo_name == "clever_algorithm":
         # run clever algorithm
         # generate clever report
         global needed_report_name
-        needed_report_name = 'clever_algorithm_report.pdf'
+        if config_path == "100days":
+            Loader(config_filename='config100_clever.cfg')
+            needed_report_name = 'clever_algorithm_report100.pdf'
+        if config_path == "250days":
+            Loader(config_filename='config250_clever.cfg')
+            needed_report_name = 'clever_algorithm_report250.pdf'
     else:
-        # MUST NOT APPEAR!
-        needed_report_name = "reserve_clever_report.pdf"
+        assert False
 
     print('Run algorithm!')
 

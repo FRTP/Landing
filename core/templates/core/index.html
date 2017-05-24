@@ -19,10 +19,9 @@
     <link href="/static/core/css/style.css" rel="stylesheet">
     <link href="/static/core/color/default.css" rel="stylesheet">
 
-
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom" onload="init_vars();">
 
 <!-- Preloader -->
 <div id="preloader">
@@ -36,7 +35,7 @@
                 <i class="fa fa-bars"></i>
             </button>
             <img src="/static/core/img/wb_40.png" alt="" style="padding-top: 5px">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="/">
                 <h1>FRONTOPOLAR</h1>
             </a>
         </div>
@@ -117,7 +116,7 @@
 
 
 <!-- Section: services -->
-<section id="service" class="home-section text-center bg-gray">
+<section id="service" class="home-section text-center bg-gray" style="padding-bottom: 320px">
 
     <div class="heading-about">
         <div class="container">
@@ -187,7 +186,7 @@
 
 
 <!-- Section algorithm -->
-<section id="algorithm" class="home-section text-center">
+<section id="algorithm" class="home-section text-center" style="padding-bottom: 250px;">
     <div class="heading-algorithm">
         <div class="container">
             <div class="row">
@@ -231,7 +230,7 @@
         <div class="col-md-4 col-md-pull-1">
             <h2>Select config file</h2>
             <div class="row" style="padding-bottom: 30px;">
-                <div class="col-md-offset-3">
+                <div class="col-md-offset-4">
                     <img src="/static/core/img/setting2_200.png" class="img-responsive">
                 </div>
             </div>
@@ -245,7 +244,7 @@
 
 
 <!-- Section: contact -->
-<section id="contact" class="home-section text-center">
+<section id="contact" class="home-section text-center" style="padding-bottom: 250px;">
     <div class="heading-contact">
         <div class="container">
             <div class="row">
@@ -374,17 +373,11 @@
                 <div class="row">
                     <div class="col-md-6" id="config_1" onclick="choose_config1()">
                         <br>
-                        <p>Train period:</p>
-                        <p>Test period:</p>
-                        <p>Assets:</p>
-                        <p>Metrics</p>
+                        <p><b>Test period: 100days</b></p>
                     </div>
                     <div class="col-md-6" id="config_2" onclick="choose_config2()">
                         <br>
-                        <p>Train period:</p>
-                        <p>Test period:</p>
-                        <p>Assets:</p>
-                        <p>Metrics</p>
+                        <p><b>Test period: 250days</b></p>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -409,11 +402,11 @@
                 <div class="row">
                     <div class="col-md-6" id="random_algorithm_id" onclick="choose_random_algorithm()">
                         <br>
-                        <p>random_algorithm</p>
+                        <p><b>Random Algorithm</b></p>
                     </div>
                     <div class="col-md-6" id="clever_algorithm_id" onclick="choose_clever_algorithm()">
                         <br>
-                        <p>clever_algorithm</p>
+                        <p><b>Clever Algorithm</b></p>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -445,7 +438,9 @@
         if (clever_algorithm_chosen === true) {
             return 'clever_algorithm';
         }
-        return 'wrong_algo';
+{#        Error case #}
+        alert("error_case get algo name");
+        return 'clever_algorithm';
     }
 
     function get_config_name() {
@@ -455,7 +450,9 @@
         if (config2_chosen === true) {
             return 'config2';
         }
-        return 'wrong_config';
+{#      Error case #}
+        alert("error_case get config name");
+        return 'config1';
     }
 
 

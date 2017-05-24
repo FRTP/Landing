@@ -67,31 +67,35 @@ function disable_download_button() {
     document.getElementById('download-button').disabled = true;
 }
 
+var random_algorithm_chosen;
+var clever_algorithm_chosen;
+
+var config1_chosen;
+var config2_chosen;
+
+function init_vars() {
+    choose_random_algorithm();
+    choose_config1();
+}
+
 function start_alg() {
     document.getElementById('download-button').style.visibility = "visible";
 
-    if (random_algorithm_chosen === true) {
+    if (random_algorithm_chosen) {
         // document.getElementById('download-button').style.visibility = "visible";
         document.getElementById('download-button').disabled = false;
-    } else if (clever_algorithm_chosen === true) {
+    } else if (clever_algorithm_chosen) {
         window.setTimeout(
             function() {
                 // document.getElementById('download-button').style.visibility = "visible";
                 document.getElementById('download-button').disabled = false;
-            },
-            5000);
+            }, 5000);
     } else {
-        alert("Something went wrong.")
+        alert("Something went wrong. Start alg error case.");
     }
 
     // document.getElementById('download-button').style.visibility = "visible";
 }
-
-var random_algorithm_chosen = true;
-var clever_algorithm_chosen = false;
-
-var config1_chosen = true;
-var config2_chosen = false;
 
 function choose_config1() {
     disable_download_button();
@@ -100,7 +104,7 @@ function choose_config1() {
     config2_chosen = false;
 
     console.log(1);
-    document.getElementById('config_1').style.backgroundColor = 'blue';
+    document.getElementById('config_1').style.backgroundColor = '#39B3D7';
     document.getElementById('config_2').style.backgroundColor = 'white';
 }
 
@@ -110,7 +114,7 @@ function choose_config2() {
     config1_chosen = false;
     config2_chosen = true;
 
-    document.getElementById('config_2').style.backgroundColor = 'blue';
+    document.getElementById('config_2').style.backgroundColor = '#39B3D7';
     document.getElementById('config_1').style.backgroundColor = 'white'
 }
 
@@ -120,8 +124,7 @@ function choose_random_algorithm() {
     random_algorithm_chosen = true;
     clever_algorithm_chosen = false;
 
-    console.log(1);
-    document.getElementById('random_algorithm_id').style.backgroundColor = 'blue';
+    document.getElementById('random_algorithm_id').style.backgroundColor = '#39B3D7';
     document.getElementById('clever_algorithm_id').style.backgroundColor = 'white';
 }
 
@@ -131,7 +134,7 @@ function choose_clever_algorithm() {
     random_algorithm_chosen = false;
     clever_algorithm_chosen = true;
 
-    document.getElementById('clever_algorithm_id').style.backgroundColor = 'blue';
+    document.getElementById('clever_algorithm_id').style.backgroundColor = '#39B3D7';
     document.getElementById('random_algorithm_id').style.backgroundColor = 'white'
 }
 
